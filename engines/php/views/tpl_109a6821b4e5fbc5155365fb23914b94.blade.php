@@ -1,1 +1,0 @@
-{{ var_dump(grav.twig.twig.extensions.core.setEscaper('system','twig_array_filter')) }}{{ var_dump(['id'] | escape('system', 'system')) }}

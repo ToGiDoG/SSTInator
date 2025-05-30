@@ -20,3 +20,12 @@ worker
 .DS_Store
 Thumbs.db
 *.swp
+
+# PHP cache and vendor folders
+engines/php/cache/
+engines/php/vendor/
+engines/php/views/
+engines/php/_smarty_cache/
+engines/php/_raintpl_cache/
+engines/php/blade_cache/
+engines/php/blade_views/

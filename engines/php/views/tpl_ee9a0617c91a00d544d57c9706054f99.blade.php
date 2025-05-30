@@ -1,1 +1,0 @@
-{math equation="7*7"}

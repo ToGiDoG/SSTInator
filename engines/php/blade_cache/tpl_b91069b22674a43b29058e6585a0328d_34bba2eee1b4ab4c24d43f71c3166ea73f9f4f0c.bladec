@@ -1,1 +1,0 @@
-<tal:block tal:define="x 7*7">${x}</tal:block>
