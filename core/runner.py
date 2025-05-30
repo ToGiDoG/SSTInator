@@ -74,7 +74,7 @@ def run(
     # 4) Load and merge all payload databases
     all_dbs: Dict[str, dict] = {}
     for lang in langs:
-        path = Path(f"payloads_{lang}.json")
+        path = Path(f"payloads/payloads_{lang}.json")
         db = load_json(path)
         for engine, data in db.items():
             all_dbs[engine.lower()] = {

@@ -31,7 +31,7 @@ def load_payloads(path: Path) -> Dict[str, Dict]:
 
 def validate_language(lang: str):
     """Cross-validate payloads for a given language."""
-    path = Path(f"payloads_{lang}.json")
+    path = Path(f"../payloads/payloads_{lang}.json")
     db = load_payloads(path)
     engines = [e.lower() for e in db.keys()]
     console.print(f"\n[bold underline]Cross-validation ({lang.upper()})[/bold underline]")

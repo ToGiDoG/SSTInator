@@ -37,7 +37,7 @@ def main():
     run(
         engines_arg=args.engines,
         lang_arg=args.lang,
-        do_discriminate=args.discriminate
+        do_discriminate=args.guess
     )
 
 if __name__ == "__main__":
