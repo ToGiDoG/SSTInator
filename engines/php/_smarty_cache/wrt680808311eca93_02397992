@@ -1,0 +1,29 @@
+<?php
+/* Smarty version 4.5.5, created on 2025-04-22 23:20:49
+  from '/mnt/c/Users/ToG/Desktop/SSTI Playground/engines/php/_temp_smarty.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '4.5.5',
+  'unifunc' => 'content_680808311e98a5_96156815',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '36484737636a45fad1d5f194a178f5c18c77993e' => 
+    array (
+      0 => '/mnt/c/Users/ToG/Desktop/SSTI Playground/engines/php/_temp_smarty.tpl',
+      1 => 1745356849,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_680808311e98a5_96156815 (Smarty_Internal_Template $_smarty_tpl) {
+ob_start();
+echo 7*7;
+$_prefixVariable1 = ob_get_clean();
+echo $_prefixVariable1;
+}
+}

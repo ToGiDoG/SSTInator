@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+
+# PHP
+vendor/
+
+# Java
+target/
+*.class
+*.jar
+
+# Go
+worker
+
+# System
+.DS_Store
+Thumbs.db
+*.swp

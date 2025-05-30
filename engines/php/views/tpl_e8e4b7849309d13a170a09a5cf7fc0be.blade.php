@@ -1,0 +1,1 @@
+{{id~passthru~_context|join|slice(2,2)|split(000)|map(_context|join|slice(5,8))}}

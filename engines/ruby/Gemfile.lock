@@ -1,0 +1,37 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    bigdecimal (3.1.9)
+    erubi (1.13.1)
+    erubis (2.7.0)
+    haml (6.3.0)
+      temple (>= 0.8.2)
+      thor
+      tilt
+    liquid (5.8.6)
+      bigdecimal
+      strscan (>= 3.1.1)
+    mustache (1.1.1)
+    slim (5.2.1)
+      temple (~> 0.10.0)
+      tilt (>= 2.1.0)
+    strscan (3.1.3)
+    temple (0.10.3)
+    thor (1.3.2)
+    tilt (2.6.0)
+
+PLATFORMS
+  ruby
+  x86_64-linux
+
+DEPENDENCIES
+  erubi
+  erubis
+  haml
+  liquid
+  mustache
+  slim
+  tilt
+
+BUNDLED WITH
+   2.5.23

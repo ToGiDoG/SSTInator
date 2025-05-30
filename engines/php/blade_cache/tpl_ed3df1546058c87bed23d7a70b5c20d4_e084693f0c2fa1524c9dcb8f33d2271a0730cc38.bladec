@@ -1,0 +1,1 @@
+<tal:block tal:define="x php:7*7">${x}</tal:block>

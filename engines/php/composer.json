@@ -1,0 +1,24 @@
+{
+  "name": "ssti/playground-php-engines",
+  "description": "Playground SSTI – moteurs de templates PHP complets",
+  "type": "project",
+  "require": {
+    "twig/twig": "^3.0",
+    "league/plates": "^3.4",
+    "smarty/smarty": "^4.0",
+    "mustache/mustache": "^2.14",
+    "latte/latte": "^3.0",
+    "phptal/phptal": "^1.9",
+    "rain/raintpl": "^3.0",
+    "eftec/bladeone": "^4.7"
+  },
+  "autoload": {
+    "psr-4": {
+      "Engines\\Php\\": "engines/php/"
+    }
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "platform-check": false
+  }
+}
