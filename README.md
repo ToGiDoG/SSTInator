@@ -35,7 +35,7 @@ Make sure you have the following installed globally:
 ### 🛠️ Install
 
 ```
-git clone https://github.com/yourname/SSTInator.git
+git clone https://github.com/ToGiDoG/SSTInator
 cd SSTInator
 chmod +x install.sh
 ./install.sh
@@ -74,6 +74,8 @@ python3 main.py --list-engines
 ---
 
 ## 🧰 Examples
+
+During the discrimination phase, only copy/paste the answers from your engine under test into the SSTInator (not possible in blind).
 
 ```
 Starting engine discrimination (case sensitive)
